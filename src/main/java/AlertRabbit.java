@@ -1,15 +1,12 @@
 
-
-
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-
 import static org.quartz.JobBuilder.*;
 import static org.quartz.TriggerBuilder.*;
 import static org.quartz.SimpleScheduleBuilder.*;
+
 import java.io.IOException;
 import java.util.Properties;
-
 
 
 public class AlertRabbit {

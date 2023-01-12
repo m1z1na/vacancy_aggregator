@@ -1,7 +1,8 @@
 
+
+
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-
 
 import static org.quartz.JobBuilder.*;
 import static org.quartz.TriggerBuilder.*;
@@ -16,7 +17,6 @@ public class AlertRabbit {
 
     public static void main(String[] args) {
 
-        System.out.println(getPeriod());
 
         try {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -46,7 +46,7 @@ public class AlertRabbit {
         int period = 0;
         Properties prop = new Properties();
         try {
-            prop.load(Main.class.getClassLoader().getResourceAsStream("rabbit.properties"));
+            prop.load(AlertRabbit.class.getClassLoader().getResourceAsStream("rabbit.properties"));
             period = Integer.parseInt(prop.getProperty("rabbit.interval"));
         } catch (IOException ex) {
             ex.printStackTrace();

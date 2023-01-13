@@ -15,7 +15,7 @@ import java.util.Map;
 public class AlertRabbit {
 
 
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args)  {
 
         try {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();

@@ -10,19 +10,25 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 
 public class AlertRabbit {
 
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
+        AlertRabbit rabbit = new AlertRabbit();
+
+        Properties properties = rabbit.loadProperties();
+        int interval = Integer.parseInt(properties.getProperty("rabbit.interval"));
+
 
         try {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();
             JobDetail job = newJob(Rabbit.class).build();
             SimpleScheduleBuilder times = simpleSchedule()
-                    .withIntervalInSeconds(getPeriod("rabbit.interval"))
+                    .withIntervalInSeconds(interval)
                     .repeatForever();
             Trigger trigger = newTrigger()
                     .startNow()
@@ -41,24 +47,14 @@ public class AlertRabbit {
         }
     }
 
-    public static int getPeriod(String name) {
-        Map<String, String> values = new HashMap<String, String>();
-        String line;
-        try (BufferedReader read = new BufferedReader(new FileReader("C:\\projects\\job4j_grabber\\src\\main\\resources\\rabbit.properties"))) {
 
-            while ((line = read.readLine()) != null) {
-                String[] parts = line.split("=", 2);
-                if (parts.length >= 2 && parts[0] != "" && parts[1] != "") {
-                    String key = parts[0];
-                    String value = parts[1];
-                    values.put(key, value);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    public Properties loadProperties() {
+        Properties config = new Properties();
+        try (InputStream in = AlertRabbit.class.getClassLoader().getResourceAsStream("rabbit.properties")) {
+            config.load(in);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return Integer.parseInt(values.get(name));
+        return config;
     }
 }

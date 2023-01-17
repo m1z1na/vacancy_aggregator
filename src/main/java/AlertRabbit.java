@@ -24,8 +24,7 @@ public class AlertRabbit {
 
     }
 
-    static Properties getProperties() {
-
+    public Properties getProperties() {
         Properties properties = new Properties();
         try (InputStream in = AlertRabbit.class.getClassLoader().getResourceAsStream("rabbit.properties")) {
             properties.load(in);
@@ -36,11 +35,9 @@ public class AlertRabbit {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
         AlertRabbit rabbit = new AlertRabbit();
-        Properties pr = getProperties();
+        Properties pr = rabbit.getProperties();
         int interval = Integer.parseInt(pr.getProperty("rabbit.interval"));
-
         try (Connection connection = rabbit.init(pr)) {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();

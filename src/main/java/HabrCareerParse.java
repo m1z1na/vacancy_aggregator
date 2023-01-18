@@ -15,9 +15,7 @@ public class HabrCareerParse {
     private static final int MAX_PAGE = 5;
 
     public static void main(String[] args) throws IOException {
-
         HabrCareerDateTimeParser parser = new HabrCareerDateTimeParser();
-
         for (int pageIterator = 1; pageIterator < MAX_PAGE; pageIterator = pageIterator + 1) {
             Connection connection = Jsoup.connect(PAGE_LINK + pageIterator);
             Document document = connection.get();

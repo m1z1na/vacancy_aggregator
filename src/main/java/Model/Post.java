@@ -22,6 +22,47 @@ public class Post {
                 '}';
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -29,16 +70,14 @@ public class Post {
 
         Post post = (Post) o;
 
-        if (!title.equals(post.title)) return false;
-        if (!link.equals(post.link)) return false;
-        return description.equals(post.description);
+        if (id != post.id) return false;
+        return link.equals(post.link);
     }
 
     @Override
     public int hashCode() {
-        int result = title.hashCode();
+        int result = id;
         result = 31 * result + link.hashCode();
-        result = 31 * result + description.hashCode();
         return result;
     }
 }

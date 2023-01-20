@@ -80,4 +80,5 @@ public class Post {
         result = 31 * result + link.hashCode();
         return result;
     }
+
 }

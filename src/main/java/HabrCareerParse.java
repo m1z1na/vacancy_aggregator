@@ -27,19 +27,19 @@ public class HabrCareerParse {
             Document document = connection.get();
             Elements rows = document.select(".vacancy-card__inner");
             rows.forEach(row -> {
-                Element titleElement = row.select(".vacancy-card__title").first();
-                String date = row.select(".basic-date").first().attr("datetime");
-                Element linkElement = titleElement.child(0);
-                String vacancyName = titleElement.text();
-                String link = String.format("%s%s", SOURCE_LINK, linkElement.attr("href"));
-                System.out.printf("%s %s %s  %n", vacancyName, link, careerHabr.dateTimeParser.parse(date));
+                        Element titleElement = row.select(".vacancy-card__title").first();
+                        String date = row.select(".basic-date").first().attr("datetime");
+                        Element linkElement = titleElement.child(0);
+                        String vacancyName = titleElement.text();
+                        String link = String.format("%s%s", SOURCE_LINK, linkElement.attr("href"));
+                        System.out.printf("%s %s %s  %n", vacancyName, link, careerHabr.dateTimeParser.parse(date));
 
-                try {
-                    System.out.printf(careerHabr.retrieveDescription(link));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+                        try {
+                            System.out.printf(careerHabr.retrieveDescription(link));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
             );
 
         }
@@ -54,5 +54,3 @@ public class HabrCareerParse {
 
     }
 }
-
-

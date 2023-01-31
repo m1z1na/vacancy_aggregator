@@ -1,6 +1,8 @@
+package ru.job4j.grabber;
+
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import utils.HabrCareerDateTimeParser;
+import ru.job4j.grabber.utils.HabrCareerDateTimeParser;
 
 import java.io.*;
 import java.util.Properties;
@@ -63,6 +65,7 @@ public class Grabber implements Grab {
         grab.cfg();
         Scheduler scheduler = grab.scheduler();
         Store store = grab.store();
-        grab.init((Parse) new HabrCareerParse(new HabrCareerDateTimeParser()), store, scheduler);
+        grab.init((Parse) new HabrCareerParse( ), store, scheduler);
+//        grab.init((Parse) new HabrCareerParse(new HabrCareerDateTimeParser()), store, scheduler);
     }
 }

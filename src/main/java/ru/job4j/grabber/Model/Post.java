@@ -1,4 +1,4 @@
-package Model;
+package ru.job4j.grabber.Model;
 
 import java.time.LocalDateTime;
 

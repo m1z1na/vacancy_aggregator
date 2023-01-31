@@ -1,7 +1,8 @@
-import Model.Post;
+package ru.job4j.grabber;
+
+import ru.job4j.grabber.Model.Post;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.List;
 import java.util.Properties;
 

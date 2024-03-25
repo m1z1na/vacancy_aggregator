@@ -65,7 +65,7 @@ public class Grabber implements Grab {
         grab.cfg();
         Scheduler scheduler = grab.scheduler();
         Store store = grab.store();
-        grab.init((Parse) new HabrCareerParse( ), store, scheduler);
+        grab.init((Parse) new HabrCareerParse( new HabrCareerDateTimeParser()), store, scheduler);
 
     }
 }
